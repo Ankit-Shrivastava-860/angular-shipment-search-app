@@ -1,0 +1,71 @@
+<div class="container container-custom">
+  <div class="results-header">
+    <div class="heading-bar">
+      <div class="left-chevron">
+        <button class="btn btn-link" (click)="goBack()"><i class="bi bi-chevron-left"></i></button>
+      </div>
+      <span role="heading" class="heading fw-bold">{{'result.LABEL_Results' | translate}}</span>
+    </div>
+    <div class="action-holder">
+      <button class="btn btn-outline-primary button-hide" (click)="goBack()"> {{ 'globals.ACTION_Close' | translate}}</button>
+      <button class="btn close-button-show" (click)="goBack()"><i class="bi bi-x-lg"></i></button>
+    </div>
+  </div>
+  <div class="product-header">
+    <div class="product-count">
+      <span>{{totalNoOfRecords}} {{'result.LABEL_TotalShipments' | translate}}</span>
+    </div>
+    <div class="filter-right">
+      <div class="container">
+        <!-- Filter Modal Template -->
+<ng-template #filterModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">{{'result.LABEL_Refine' | translate}}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
+      <div formArrayName="statuses" class="statuses">
+        <div class="form-check" *ngFor="let status of statuses; let i = index">
+          <input class="form-check-input" type="checkbox" [formControlName]="i" id="{{status}}">
+          <label class="form-check-label" for="{{status}}">{{status}}</label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">{{'globals.ACTION_Apply' | translate}}</button>
+    </form>
+  </div>
+</ng-template>
+
+<!-- Button to Open Modal -->
+<button class="btn btn-outline-primary" (click)="open(filterModal)"><i class="bi bi-funnel"></i></button>
+
+      </div>
+    </div>
+  </div>
+  <ul class="results-list">
+    <li class="list" *ngFor="let shipment of shipments">
+      <div class="details-info">
+        <div class="primary-information">
+          <div class="primary-information-div">
+            <div class="primary-information-div-div">
+              <p class="mb-0 fw-bold">{{ shipment.OrderNo }}</p>
+              <p class="mb-0">{{shipment.ShipmentLines.TotalNumberOfRecords}} {{ 'result.LABEL_Products' | translate }}</p>
+              <p class="mb-0">{{ 'result.LABEL_Carrier' | translate }} {{shipment.ScacAndService}}</p>
+              <p class="mb-0">{{ 'result.LABEL_Shipment' | translate }} <a class="text-info" (click)="viewDetails(shipment.ShipmentNo)">{{ shipment.ShipmentNo }}</a></p>
+            
+              <div class="tertiary-info">
+                <p class="mb-0 fw-bold">{{'result.LABEL_CustomerInfo' | translate}}</p>
+                <p class="mb-0">{{ shipment.BillToAddress.FirstName }} {{ shipment.BillToAddress.LastName }}<br>{{ shipment.BillToAddress.DayPhone }}<br>{{ shipment.BillToAddress.EMailID }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="secondary-info">
+            <p class="mb-0 status-ready">{{ shipment.Status }}</p>
+            <p class="mb-0">{{ 'result.LABEL_AssignedTo' | translate }} {{shipment.AssignedToUserId}}</p>
+            <p class="mb-0">{{ 'result.LABEL_ExpectPickupDate' | translate }} {{shipment.ExpectedShipmentDate}}</p>
+        </div>
+      </div>
+    </li>
+</ul>
+</div>

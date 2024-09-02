@@ -1,0 +1,30 @@
+<div class="container container-custom">
+  <h4 class="text-center">{{'home.LABEL_WhatDoYouWantToDO' | translate}}</h4>
+  <div class="card card-custom">
+      <h5 class="text-center">{{'home.LABEL_ShipmentSearch' | translate}}</h5>
+      <form (ngSubmit)="onSearch()" #searchForm="ngForm">
+          <div class="mb-3">
+            <input type="text" id="shipmentNumber" placeholder="{{'home.LABEL_OrderNo' | translate}}" class="form-control" [(ngModel)]="searchCriteria.orderNumber" name="orderNumber">
+          </div>
+          <div class="mb-3">
+            <input type="text" id="orderNumber" placeholder="{{'home.LABEL_ShipmentNo' | translate}}" class="form-control" [(ngModel)]="searchCriteria.shipmentNumber" name="shipmentNumber">
+          </div>
+          <div class="mb-3">
+            <input type="text" id="shipmentNumber" placeholder="{{'home.LABEL_FirstName' | translate}}" class="form-control" [(ngModel)]="searchCriteria.firstName" name="firstName">
+          </div>
+          <div class="mb-3">
+            <input type="text" id="shipmentNumber" placeholder="{{'home.LABEL_LastName' | translate}}" class="form-control" [(ngModel)]="searchCriteria.lastName" name="lastName">
+          </div>
+          <div class="mb-3">
+            <input type="text" id="shipmentNumber" placeholder="{{'home.LABEL_EmailId' | translate}}" class="form-control" [(ngModel)]="searchCriteria.emailId" name="emailId">
+          </div>
+          <div class="mb-3">
+            <input type="number" id="shipmentNumber" placeholder="{{'home.LABEL_PhoneNo' | translate}}" class="form-control" [(ngModel)]="searchCriteria.phoneNo" name="phoneNo">
+          </div>
+          <div class="text-end">
+              <button type="reset" class="btn btn-outline-primary me-2">{{'globals.ACTION_Reset' | translate}}</button>
+              <button type="submit" class="btn btn-primary">{{'globals.ACTION_Search' | translate}}</button>
+          </div>
+      </form>
+  </div>
+</div>

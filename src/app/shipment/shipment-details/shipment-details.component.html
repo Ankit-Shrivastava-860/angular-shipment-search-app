@@ -1,0 +1,96 @@
+<div class="container container-custom">
+    <div class="results-header">
+      <div class="heading-bar">
+        <div class="left-chevron">
+          <button class="btn btn-link" (click)="goBack()"><i class="bi bi-chevron-left"></i></button>
+        </div>
+        <div>
+          <span role="heading" class="heading fw-bold">{{'details.LABEL_SummaryDetails' | translate}}</span>
+          <span class="mb-0 heading"> {{ shipment.OrderNo }}</span>
+        </div>
+      </div>
+      <div class="action-holder">
+        <i class="bi bi-check-circle text-success"></i>
+      </div>
+    </div>
+
+    <div class="results-list">
+      <div class="list" [ngClass]="{'show-info': isShowInfo, 'hide-info': !isShowInfo}">
+        <div class="details-info">
+          <div class="primary-information">
+            <div class="primary-information-div">
+              <div class="primary-information-div-div">
+                <p class="mb-0 status-ready my-10">{{ shipment.Status }}</p>
+                <p class="mb-0 my-10">{{ 'details.LABEL_ShipmentNo' | translate }} <br> {{ shipment.ShipmentNo }} </p>
+                <span *ngIf="shipment?.DeliveryMethod === 'SHP'">
+                  <p class="mb-0 my-10">{{ 'details.LABEL_Carrier' | translate }} <br> {{shipment.ScacAndService}}</p>
+                </span>
+                <p class="mb-0">{{ 'details.LABEL_AssignedTo' | translate }} <br> {{shipment.AssignedToUserId}}</p>
+
+                <div class="tertiary-info">
+                  <p class="mb-0 fw-bold">{{'details.LABEL_ShipTo' | translate}}</p>
+                  <p class="mb-0">{{ shipment.ToAddress.FirstName }} {{ shipment.ToAddress.LastName }} </p>
+                  <p class="mb-0">{{ shipment.ToAddress.AddressLine1 }} </p>
+                  <p class="mb-0">{{ shipment.ToAddress.City }} {{ shipment.ToAddress.State }} {{ shipment.ToAddress.ZipCode }}</p>
+                  <p class="mb-0">{{ shipment.ToAddress.Country }} </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="secondary-info">
+              <span *ngIf="shipment?.DeliveryMethod === 'SHP'">
+                <p class="mb-0">{{ 'details.LABEL_ExpectShipDate' | translate }} <br> {{shipment.ExpectedShipmentDate}}</p>
+              </span>
+              <span *ngIf="shipment?.DeliveryMethod === 'PICK'">
+                <p class="mb-0">{{ 'details.LABEL_ExpectPickupDate' | translate }} {{shipment.ExpectedShipmentDate}}</p>
+              </span>
+              <div>
+                <p class="mb-0 fw-bold">{{'details.LABEL_CustomerInfo' | translate}}</p>
+                <p class="mb-0">{{ shipment.BillToAddress.FirstName }} {{ shipment.BillToAddress.LastName }} </p>
+                <p class="mb-0">{{ shipment.BillToAddress.Phonenumber }} <br>{{ shipment.BillToAddress.DayPhone }}</p>
+                <p class="mb-0">{{ shipment.BillToAddress.EmailID }} </p>
+              </div>
+              <div>
+                <p class="mb-0 fw-bold">{{'details.LABEL_BillTo' | translate}}</p>
+                <p class="mb-0">{{ shipment.BillToAddress.FirstName }} {{ shipment.BillToAddress.LastName }} </p>
+                <p class="mb-0">{{ shipment.BillToAddress.AddressLine1 }} </p>
+                <p class="mb-0">{{ shipment.BillToAddress.City }} {{ shipment.BillToAddress.State }} {{ shipment.BillToAddress.ZipCode }}</p>
+                <p class="mb-0">{{ shipment.BillToAddress.Country }} </p>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="action-holder" *ngIf="isShowInfo">
+          <button class="btn btn-link" (click)="hideInfo()">{{'details.ACTION_HideInfo' | translate}}</button>
+        </div>
+        <div class="action-holder " *ngIf="!isShowInfo">
+          <button class="btn btn-link" (click)="showInfo()">{{'details.ACTION_ShowInfo' | translate}}</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active text-decoration-underline" aria-current="page">{{'details.LABEL_Products' | translate}} ({{shipment.ShipmentLines?.TotalNumberOfRecords}})</a>
+          </li>
+        </ul>
+
+        <div>
+          <div>
+            <ul>
+              <li *ngFor="let line of shipment.ShipmentLines.ShipmentLine">
+                <img [src]="line.OrderLine.ItemDetails.ImageUrl" class="me-3" alt="Product Image" width="50">
+                <h6 class="mb-1">{{ line.OrderLine.ItemDetails.Description }}</h6>
+                <p> {{ 'details.LABEL_ProductId' | translate}} {{line.OrderLine.ItemDetails.ItemID }} </p>
+                <p> {{'details.LABEL_Quantity' | translate}} {{ line.Quantity }} </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>

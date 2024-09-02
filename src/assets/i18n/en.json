@@ -1,0 +1,48 @@
+{
+  "globals": {
+    "TITLE_ProductName": "IBM Store Enagement",
+    "LABEL_StoreAssociate": "Shipment Search",
+    "ACTION_Close": "Close",
+    "ACTION_Reset": "Reset",
+    "ACTION_Apply": "Apply",
+    "ACTION_Search": "Search"
+  },
+  "home": {
+    "LABEL_WhatDoYouWantToDO": "What do you want to do?",
+    "LABEL_ShipmentSearch": "Shipment Search",
+    "LABEL_OrderNo": "Order #",
+    "LABEL_ShipmentNo": "Shipment #",
+    "LABEL_EmailId": "Email ID",
+    "LABEL_FirstName": "First Name",
+    "LABEL_LastName": "Last Name",
+    "LABEL_PhoneNo": "Phone number"
+  },
+  "result": {
+    "LABEL_Results": "Shipment Search Results",
+    "LABEL_Carrier": "Carrier: ",
+    "LABEL_CustomerInfo": "Customer Info",
+    "LABEL_ExpectPickupDate": "Expected Pickup Date: ",
+    "LABEL_TotalShipments": "results",
+    "LABEL_AssignedTo": "Assigned to: ",
+    "LABEL_Products": "products",
+    "LABEL_Shipment": "Shipment #",
+    "LABEL_Refine": "Refine"
+  },
+  "details": {
+    "LABEL_SummaryDetails": "Shipment Summary",
+    "ACTION_ShowInfo": "Show Info",
+    "ACTION_HideInfo": "Hide Info",
+    "LABEL_OrderNo": "Order Number",
+    "LABEL_ShipmentNo": "Shipment Number",
+    "LABEL_Carrier": "Carrier",
+    "LABEL_AssignedTo" : "Assigned to",
+    "LABEL_ShipTo": "Ship To",
+    "LABEL_BillTo": "Bill To",
+    "LABEL_CustomerInfo": "Customer Info",
+    "LABEL_ExpectPickupDate": "Expected Pickup Date",
+    "LABEL_ExpectShipDate": "Expected Ship Date",
+    "LABEL_Products": "Products",
+    "LABEL_Quantity": "Quantity: ",
+    "LABEL_ProductId": "Product Id: "
+  }
+}
